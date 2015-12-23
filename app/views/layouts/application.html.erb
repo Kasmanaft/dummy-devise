@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DummyDevise</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li <%= "class='active'".html_safe if controller_name=='kittens' %>><%= link_to 'Show me kittens', root_path %></li>
+        <% if user_signed_in? %>
+          <li <%= "class='active'".html_safe if controller_name=='registrations' %>><%= link_to 'Change Password', edit_user_registration_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="main" role="main">
+    <div class="container">
+      <div class="content">
+         <div class="row">
+           <% flash.each do |type, message| %>
+             <div class="alert <%= alert_class_for(type) %> alert-dismissible timedout">
+               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+               <%= message %>
+             </div>
+            <% end %>
+            <%= yield %>
+        </div>
+        <footer>
+        </footer>
+      </div>
+    </div> <!--! end of .container -->
+  </div> <!--! end of #main -->
+</body>
+</html>

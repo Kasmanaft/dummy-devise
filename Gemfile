@@ -30,4 +30,5 @@ group :test do
   gem 'shoulda-matchers', require: false # https://github.com/rails/spring/issues/209
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
 end

@@ -16,6 +16,8 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'bootstrap-sass'
 
+gem 'simple_form'
+
 group :development, :test do
   gem 'spring'
   gem 'quiet_assets'

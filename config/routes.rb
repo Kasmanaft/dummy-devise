@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   devise_for :users
-  root to: "kittens#random"
+  root to: "articles#index"
 end

@@ -10,7 +10,8 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <ul class="nav navbar-nav">
-        <li <%= "class='active'".html_safe if controller_name=='kittens' %>><%= link_to 'Show me kittens', root_path %></li>
+        <li <%= "class='active'".html_safe if controller_name=='articles' and action_name == "new" %>><%= link_to 'Create new article', new_article_path %></li>
+        <li <%= "class='active'".html_safe if controller_name=='articles' and action_name == "index" %>><%= link_to 'Show me all articles', articles_path %></li>
         <% if user_signed_in? %>
           <li <%= "class='active'".html_safe if controller_name=='registrations' %>><%= link_to 'Change Password', edit_user_registration_path %></li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></li>

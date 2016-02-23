@@ -1,4 +1,10 @@
-<p id="notice"><%= notice %></p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= link_to @article.title, article_path(@article) %></h3>
+    </div>
+    <div class="panel-body">
+      <%= @article.body %>
+      
+    </div>
+  </div>  
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>

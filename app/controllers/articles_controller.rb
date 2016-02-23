@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -28,7 +29,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to articles_path, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -40,6 +41,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    redirect_to articles_path, alert: 'You cannot do it.' if current_user != @article.user
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -69,7 +71,11 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:body, :title)
+      params.require(:article).permit(:body, :title).merge(user_id: current_user.id)
       
+    end
+    
+    def check_owner 
+      redirect_to articles_path, alert: 'You cannot do it.' and return false if current_user != @article.user
     end
 end

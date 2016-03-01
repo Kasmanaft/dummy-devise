@@ -1,0 +1,7 @@
+<tr>
+  <td> created by <%= article.try(:user).try(:email)%> </td>
+  <td><p class="text-right"><%= link_to 'Edit', edit_article_path(article) %></p></td>
+  <td><p class="text-right"><%= link_to 'Comments', article_comments_path(article) %></p></td>
+  <!-- <td><%= link_to 'Show', article %></td>
+  <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+</td>

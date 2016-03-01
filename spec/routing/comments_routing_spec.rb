@@ -4,15 +4,15 @@ RSpec.describe CommentsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/comments").to route_to("comments#index")
+      expect(:get => "/articles/1/comments").to route_to("comments#index", :article_id => "1")
     end
 
     it "routes to #new" do
-      expect(:get => "/comments/new").to route_to("comments#new")
+      expect(:get => "/articles/1/comments/new").to route_to("comments#new", :article_id => "1")
     end
 
     it "routes to #show" do
-      expect(:get => "/comments/1").to route_to("comments#show", :id => "1")
+      expect(:get => "/articles/1/comments/1").to route_to("comments#show", :article_id => "1", :id => "1")
     end
 
     it "routes to #edit" do

@@ -1,7 +1,7 @@
 <% @articles.each do |article| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= render partial: 'header', locals: { article: article } %>
+      <%= render partial: 'header', locals: { article: article } %>
     </div>
     <div class="panel-body">
       <%= truncate(article.body, length: 500) %>

@@ -7,3 +7,12 @@
 
     </div>
 </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <%= render partial: 'comments/form', locals: { article: @article, comment: Comment.new } %>
+  </div>
+
+    <%= render partial: "comments/comment", collection: @article.comments %>
+  
+</div>

@@ -1,7 +1,7 @@
-<tr>
-  <td> created by <%= article.try(:user).try(:email)%> </td>
-  <td><p class="text-right"><%= link_to 'Edit', edit_article_path(article) %></p></td>
-  <td><p class="text-right"><%= link_to 'Comments', article_comments_path(article) %></p></td>
+  <h3 class="panel-title">
+    <%= link_to article.title, article_path(article) %>
+    created by <%= article.try(:user).try(:email)%> </h3>
+  <div><p class="text-right"><%= link_to 'Edit', edit_article_path(article) %></p></div>
+  <div><p class="text-right"><%= article.comments.count %> Comments </p></div>
   <!-- <td><%= link_to 'Show', article %></td>
   <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %> -->
-</td>
